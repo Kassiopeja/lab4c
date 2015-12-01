@@ -10,7 +10,7 @@
 #define ERROR_DIVISION_BY_ZERO -1
 #define ERROR_INVALID_OPERATION -2
 
-char module_name[15] = "calculator";
+char module_name[5] = "calk";
 
 static long first;
 static long second;
@@ -183,4 +183,4 @@ static ssize_t dev_write(struct file* file_, const char* buffer, size_t length, 
 
 
 MODULE_LICENSE("GPL");
-MODULE_DESCRIPTION("Calkulator");
+MODULE_DESCRIPTION("calculator");
