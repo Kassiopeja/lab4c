@@ -23,15 +23,17 @@ static int dev_open(struct inode* inode_, struct file* file_);
 static ssize_t dev_read(struct file* file_, char* buffer, size_t length, loff_t* off);
 static ssize_t dev_write(struct file* file_, const char* buffer, size_t length, loff_t* off);
 
-static struct file_operations fops = {
+static struct file_operations fops = 
+{
     .owner = THIS_MODULE,
     .read = dev_read,
     .write = dev_write,
     .open = dev_open
  };
 
-static int calculate(void) {
-    switch(operation)     {
+static int calculate(void) 
+{
+    switch(operation) {
         case '+':
             result = first + second;
             break;
@@ -55,7 +57,8 @@ static int calculate(void) {
 	return 0;
 }
 
-int init_module(void){
+int init_module(void)
+{
     int major_number;
     first = 0;
     second = 0;
@@ -76,17 +79,20 @@ int init_module(void){
     return 0;
 }
 
-void cleanup_module(void){
+void cleanup_module(void)
+{
     unregister_chrdev(MAJOR_NUMBER, module_name);
     printk("Module \"%s\" unloaded\n", module_name);
 }
 
-static int dev_open(struct inode* inode_, struct file* file_){
+static int dev_open(struct inode* inode_, struct file* file_)
+{
     return 0;
 }
 
 
-static ssize_t dev_read(struct file* file_, char* buffer, size_t length, loff_t* off){
+static ssize_t dev_read(struct file* file_, char* buffer, size_t length, loff_t* off)
+{
     int error_code = 0;
     int major_num;
     int minor_num;
@@ -96,7 +102,7 @@ static ssize_t dev_read(struct file* file_, char* buffer, size_t length, loff_t*
     minor_num = MINOR(file_inode(file_)->i_rdev);
     memset(message, 0, sizeof(message));
 
-    switch(minor_num)    { 
+    switch(minor_num) { 
         case 0: // first
             snprintf(message, sizeof(message), "first =  %ld\n", first);
             break;
@@ -108,7 +114,7 @@ static ssize_t dev_read(struct file* file_, char* buffer, size_t length, loff_t*
             break;
         case 3: // result
             error_code = calculate();
-            switch(error_code)            {
+            switch(error_code) {
                 case 0:
                     snprintf(message, sizeof(message), "result = %ld\n", result);
                     break;
@@ -139,7 +145,8 @@ static ssize_t dev_read(struct file* file_, char* buffer, size_t length, loff_t*
     return 1;
 }
 
-static ssize_t dev_write(struct file* file_, const char* buffer, size_t length, loff_t* off){
+static ssize_t dev_write(struct file* file_, const char* buffer, size_t length, loff_t* off)
+{
     int major_num;
     int minor_num;
     char message[256];
@@ -150,7 +157,7 @@ static ssize_t dev_write(struct file* file_, const char* buffer, size_t length, 
 
     copy_from_user(message, buffer, length);
 
-    switch(minor_num)    { 
+    switch(minor_num) { 
         case 0: // first
             kstrtol(message, 10, &first);
             printk("first = %ld\n", first);
