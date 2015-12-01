@@ -2,11 +2,19 @@ sudo rm -f /dev/calculator_first
 sudo rm -f /dev/calculator_second
 sudo rm -f /dev/calculator_operation
 sudo rm -f /dev/calculator_result
+<<<<<<< HEAD
 sudo rmmod calk
 
 make 
 echo ""
 sudo insmod ./calk.ko
+=======
+sudo rmmod calculator
+
+make 
+echo ""
+sudo insmod ./calculator.ko
+>>>>>>> 452ebb94599aff597e71c9171ecda9c68030c169
 
 sudo mknod /dev/calculator_first c 300 0
 sudo mknod /dev/calculator_second c 300 1
