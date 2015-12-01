@@ -1,4 +1,4 @@
-obj-m := calculator.o 
+obj-m := calk.o 
 
 KDIR  := /lib/modules/$(shell uname -r)/build
 PWD   := $(shell pwd)
