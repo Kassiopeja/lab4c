@@ -2,7 +2,7 @@ sudo rm -f /dev/calculator_first
 sudo rm -f /dev/calculator_second
 sudo rm -f /dev/calculator_operation
 sudo rm -f /dev/calculator_result
-sudo rmmod calculator
+sudo rmmod calk
 
 make 
 echo ""
