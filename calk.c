@@ -5,7 +5,7 @@
 #include <asm/uaccess.h> 
 #include <linux/device.h> 
 #include <linux/cdev.h> 
-
+/*no changes*/
 #define MAJOR_NUMBER 300
 #define ERROR_DIVISION_BY_ZERO -1
 #define ERROR_INVALID_OPERATION -2
