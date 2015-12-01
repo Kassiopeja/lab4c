@@ -6,7 +6,7 @@ sudo rmmod calculator
 
 make 
 echo ""
-sudo insmod ./calculator.ko
+sudo insmod ./calk.ko
 
 sudo mknod /dev/calculator_first c 300 0
 sudo mknod /dev/calculator_second c 300 1
